@@ -16,8 +16,7 @@ A beautiful world clock app with glassmorphic dark UI, mechanical flip clock ani
 
 ## Live Demo
 
-Visit the live app (after GitHub Pages deployment):
-> `https://<username>.github.io/neram_app/`
+**[Open Neram](https://harinikshan.github.io/neram_app/)** — try it live, install as PWA from your browser
 
 ## Tech Stack
 
@@ -41,7 +40,7 @@ Visit the live app (after GitHub Pages deployment):
 ### Run Locally
 
 ```bash
-git clone https://github.com/<username>/neram_app.git
+git clone https://github.com/harinikshan/neram_app.git
 cd neram_app
 flutter pub get
 flutter run -d chrome
