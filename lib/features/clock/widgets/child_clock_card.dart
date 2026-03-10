@@ -72,10 +72,6 @@ class ChildClockCard extends ConsumerWidget {
       borderOpacity: 0.1,
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-      onLongPress: () {
-        HapticFeedback.mediumImpact();
-        _showOptions(context, ref);
-      },
       child: LayoutBuilder(
         builder: (context, constraints) {
           final compact = constraints.maxWidth < 380;
@@ -145,6 +141,30 @@ class ChildClockCard extends ConsumerWidget {
             ],
           );
 
+          final optionsButton = GestureDetector(
+            onTap: () {
+              HapticFeedback.mediumImpact();
+              _showOptions(context, ref);
+            },
+            child: Container(
+              width: 28,
+              height: 28,
+              decoration: BoxDecoration(
+                color: AppColors.glassFill.withValues(alpha: 0.3),
+                borderRadius: BorderRadius.circular(7),
+                border: Border.all(
+                  color: AppColors.glassBorder.withValues(alpha: 0.2),
+                  width: 0.5,
+                ),
+              ),
+              child: Icon(
+                Icons.more_vert_rounded,
+                color: AppColors.textTertiary,
+                size: 16,
+              ),
+            ),
+          );
+
           if (compact) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -161,8 +181,9 @@ class ChildClockCard extends ConsumerWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
+                    optionsButton,
                     if (dragHandle != null) ...[
-                      const SizedBox(width: 8),
+                      const SizedBox(width: 6),
                       dragHandle!,
                     ],
                   ],
@@ -198,8 +219,10 @@ class ChildClockCard extends ConsumerWidget {
               ),
               const SizedBox(width: 8),
               clockWidget,
+              const SizedBox(width: 6),
+              optionsButton,
               if (dragHandle != null) ...[
-                const SizedBox(width: 8),
+                const SizedBox(width: 6),
                 dragHandle!,
               ],
             ],
